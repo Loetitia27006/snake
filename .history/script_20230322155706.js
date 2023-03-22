@@ -63,20 +63,21 @@ window.onload = function () {
         this.body.unshift(nextPosition);
         this.body.pop();
     };
-    this.setDirection= function(newDirection) {
+    this.setDirection(newDirection) {
       var allowedDirection;
       switch (this.direction) {
-        case "left":
-        case "right":
-          allowedDirection = ["up", "down"];
+        case 37:
+          nextPosition = "left";
           break;
-        case "down":
-        case "up":
-          allowedDirection = ["left", "right"];
+        case 38:
+          nextPosition = "up";
           break;
-      }
-      if(allowedDirection.indexOf(newDirection)>-1){
-        this.direction = newDirection;
+        case 39:
+          nextPosition = "right";
+          break;
+        case 40:
+          nextPosition = "down";
+          break;
       }
     }
   }
@@ -98,5 +99,4 @@ document.onkeydown = function handleKeyDown(e) {
       newDirection = "down";
       break;
   }
-  snakee.setDirection(newDirection);
 }

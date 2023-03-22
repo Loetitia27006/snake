@@ -63,7 +63,7 @@ window.onload = function () {
         this.body.unshift(nextPosition);
         this.body.pop();
     };
-    this.setDirection= function(newDirection) {
+    this.setDirection(newDirection) {
       var allowedDirection;
       switch (this.direction) {
         case "left":
@@ -98,5 +98,4 @@ document.onkeydown = function handleKeyDown(e) {
       newDirection = "down";
       break;
   }
-  snakee.setDirection(newDirection);
 }
