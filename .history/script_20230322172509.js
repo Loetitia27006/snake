@@ -85,7 +85,7 @@ window.onload = function () {
     }
   }
   document.onkeydown = function handleKeyDown(e) {
-    var key = e.keyCode;
+    var key = e.KeyboardEvent.keycode;
     var newDirection;
     switch (key) {
       case 37:

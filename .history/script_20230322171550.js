@@ -60,7 +60,7 @@ window.onload = function () {
             nextPosition[1] -= 1; 
             break;
           default:
-            throw("Invalid direction" + this.direction);
+            throw("Invalid direction")
         }
         this.body.unshift(nextPosition);
         this.body.pop();
@@ -84,25 +84,23 @@ window.onload = function () {
       }
     }
   }
-  document.onkeydown = function handleKeyDown(e) {
-    var key = e.keyCode;
-    var newDirection;
-    switch (key) {
-      case 37:
-        newDirection = "left";
-        break;
-      case 38:
-        newDirection = "up";
-        break;
-      case 39:
-        newDirection = "right";
-        break;
-      case 40:
-        newDirection = "down";
-        break;
-      default:
-        return;
-    }
-    snakee.setDirection(newDirection);
-  };
 };
+document.onkeydown = function handleKeyDown(e) {
+  var key = e.keyCode;
+  var newDirection;
+  switch (key) {
+    case 37:
+      newDirection = "left";
+      break;
+    case 38:
+      newDirection = "up";
+      break;
+    case 39:
+      newDirection = "right";
+      break;
+    case 40:
+      newDirection = "down";
+      break;
+  }
+  snakee.setDirection(newDirection);
+}
