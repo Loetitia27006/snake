@@ -21,7 +21,7 @@ window.onload = function () {
 
   function refreshCanvas() {
    
-    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     snakee.advance();
     snakee.draw();
     setTimeout(refreshCanvas, delay);

@@ -15,13 +15,17 @@ window.onload = function () {
     canvas.style.border = "1px solid";
     document.body.appendChild(canvas);
     ctx = canvas.getContext("2d");
-    snakee = new Snake([[6, 4],[5, 4],[4, 4]]);
+    snakee = new Snake([
+      [6, 4],
+      [5, 4],
+      [4, 4],
+    ]);
     refreshCanvas();
   }
 
   function refreshCanvas() {
    
-    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     snakee.advance();
     snakee.draw();
     setTimeout(refreshCanvas, delay);

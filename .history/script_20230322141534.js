@@ -15,14 +15,17 @@ window.onload = function () {
     canvas.style.border = "1px solid";
     document.body.appendChild(canvas);
     ctx = canvas.getContext("2d");
-    snakee = new Snake([[6, 4],[5, 4],[4, 4]]);
+    snakee = new Snake([
+      [6, 4],
+      [5, 4],
+      [4, 4],
+    ]);
     refreshCanvas();
   }
 
   function refreshCanvas() {
    
-    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-    snakee.advance();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     snakee.draw();
     setTimeout(refreshCanvas, delay);
   }
@@ -37,17 +40,11 @@ window.onload = function () {
     this.body = body;
     this.draw = function () {
       ctx.save();
-      ctx.fillStyle = "#ff0000";
-      for (var i = 0; i < this.body.length; i++) {
+      ctx.fillStyle = "#FF0000";
+      for (var i = 0; i < this.body.lenght; i++) {
         drawBlock(ctx, this.body[i]);
       }
       ctx.restore();
     };
-    this.advance = function () {
-        var nextPosition = this.body[0].slice();
-        nextPosition[0] += 1;
-        this.body.unshift(nextPosition);
-        this.body.pop()
-    }
   }
 };
