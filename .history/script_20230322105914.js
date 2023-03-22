@@ -5,8 +5,6 @@ window.onload = function(){
     var xCoord = 0;
     var yCoord = 0;
 
-    init();
-
     function init() {
         canvas = document.createElement("canvas");
         canvas.width = 900;
