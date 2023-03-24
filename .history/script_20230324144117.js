@@ -81,8 +81,6 @@ window.onload = function () {
         this.body.unshift(nextPosition);
         if(!this.ateApple)
           this.body.pop();
-        else
-          this.ateApple = false;
     };
     this.setDirection= function(newDirection) {
       var allowedDirection;

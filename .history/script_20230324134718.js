@@ -29,10 +29,7 @@ window.onload = function () {
         // game over
     }else{
       if(snakee.isEatingApple(applee)){
-        snakee.ateApple = true;
-        do{
-          applee.setNewPosition();
-        }while(applee.isOnSnake(snakee))
+        applee.setNewPosition();
       }
       ctx.clearRect(0, 0, canvasWidth, canvasHeight);
       snakee.draw();
@@ -51,7 +48,6 @@ window.onload = function () {
   function Snake(body, direction) {
     this.body = body;
     this.direction = direction
-    this.ateApple = false;
     this.draw = function () {
       ctx.save();
       ctx.fillStyle = "#ff0000";
@@ -79,10 +75,7 @@ window.onload = function () {
             throw("Invalid direction" + this.direction);
         }
         this.body.unshift(nextPosition);
-        if(!this.ateApple)
-          this.body.pop();
-        else
-          this.ateApple = false;
+        this.body.pop();
     };
     this.setDirection= function(newDirection) {
       var allowedDirection;
@@ -126,17 +119,14 @@ window.onload = function () {
     }
     return wallCollision || snakeCollision;
   };
-  this.isEatingApple = function (appleToEat) {
+  this.isEatingApple(appleToEat) {
     var head = this.body[0];
-    if (
-      head[0] === appleToEat.position[0] &&
-      head[1] === appleToEat.position[1]
-    ) {
+    if(head[0] === appleToEat.position[0] && head[1] === appleToEat.position[1]){
       return true;
-    } else {
+    }else{
       return false;
     }
-  };
+  }
 }
   function Apple(position){
     this.position = position;
@@ -144,9 +134,8 @@ window.onload = function () {
       ctx.save();
       ctx.fillStyle = "#33cc33";
       var radius = blockSize/2;
-      var x = this.position[0]*blockSize + radius;
-      var y = this.position[1]*blockSize + radius;
-      ctx.beginPath();
+      var x = position[0]*blockSize + radius;
+      var y = position[1]*blockSize + radius;
       ctx.arc(x, y, radius, 0, Math.PI*2, true);
       ctx.fill();
       ctx.restore();
@@ -155,15 +144,6 @@ window.onload = function () {
       var newX = Math.round(Math.random()*(widthInBlocks - 1));
       var newY = Math.round(Math.random()*(heightInBlocks - 1));
       this.position = [newX, newY];
-    }
-    this.isOnSnake = function(snakeToCheck){
-      var isOnSnake = false;
-      for(var i=0; i< snakeToCheck.body.length; i++){
-        if (this.position[0]=== snakeToCheck.body[i][0] && this.position[1]=== snakeToCheck.body[i][1]){
-          isOnSnake = true;
-        }
-      }
-      return isOnSnake;
     }
   }
 

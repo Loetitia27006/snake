@@ -79,10 +79,7 @@ window.onload = function () {
             throw("Invalid direction" + this.direction);
         }
         this.body.unshift(nextPosition);
-        if(!this.ateApple)
-          this.body.pop();
-        else
-          this.ateApple = false;
+        this.body.pop();
     };
     this.setDirection= function(newDirection) {
       var allowedDirection;
