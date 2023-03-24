@@ -92,11 +92,11 @@ window.onload = function () {
         this.direction = newDirection;
       }
     }
-    this.checkCollision = function(){
+    this.checkCollision() = function(){
       var wallCollision = false;
       var snakeCollision = false;
       var head = this.body[0];
-      var rest = this.body.slice(1);
+      var rest = this.body.slice[1];
       var snakeX = head[0];
       var snakeY = head[1];
       var minX = 0;
@@ -109,14 +109,14 @@ window.onload = function () {
       if(isNotBetweenHorizontalWalls || isNotBetweenVerticalWalls) {
         wallCollision = true;
       }
-      for(var i = 0; i < rest.length; i++) {
+      for(var i = 0; i<rest.length; i++) {
         if(snakeX === rest[i][0] && snakeY === rest[i][1]) {
           snakeCollision = true;
       }
     }
     return wallCollision || snakeCollision;
   }
-}
+
   function Apple(position){
     this.position = position;
     this.draw = function(){
@@ -153,4 +153,4 @@ window.onload = function () {
     snakee.setDirection(newDirection);
   };
 };
-
+}
