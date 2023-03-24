@@ -8,7 +8,6 @@ window.onload = function () {
   var applee;
   var widthInBlocks = canvasWidth/blockSize;
   var heightInBlocks = canvasHeight/blockSize;
-  var score;
 
   init();
 
@@ -16,15 +15,11 @@ window.onload = function () {
     var canvas = document.createElement("canvas");
     canvas.width = canvasWidth;
     canvas.height = canvasHeight;
-    canvas.style.border = "30px solid gray";
-    canvas.style.margin = "50px auto";
-    canvas.style.display = "block";
-    canvas.style.backgroundColor = "#ddd";
+    canvas.style.border = "1px solid";
     document.body.appendChild(canvas);
     ctx = canvas.getContext("2d");
     snakee = new Snake([[6, 4],[5, 4],[4, 4],[3, 4], [2, 4]], "right");
     applee = new Apple([10, 10]);
-    score = 0;
     refreshCanvas();
   }
 
@@ -34,69 +29,17 @@ window.onload = function () {
         gameOver();
     }else{
       if(snakee.isEatingApple(applee)){
-        score++;
         snakee.ateApple = true;
         do{
           applee.setNewPosition();
         }while(applee.isOnSnake(snakee))
       }
       ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-      drawScore(); 
       snakee.draw();
-      applee.draw();
+      applee.draw(); 
       setTimeout(refreshCanvas, delay);
     }
     
-  }
-  function gameOver(){
-    ctx.save();
-    ctx.font = "bold 70px sans-serif";
-    ctx.fillStyle = "black";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.strokeStyle = "white";
-    ctx.lineWidth = 5;
-    centreX = canvasWidth/2;
-    centreY = canvasHeight/2;
-    ctx.strokeText("Game Over", centreX, centreY - 180);
-    ctx.fillText("Game Over", centreX, centreY-180);
-    ctx.font = "bold 30px sans-serif";
-    ctx.strokeText(
-      "Appuyez sur la touche espace pour rejouer",
-      centreX,
-      centreY - 120
-    );
-    ctx.fillText("Appuyez sur la touche espace pour rejouer",centreX ,centreY-120);
-
-    ctx.restore();
-  }
-
-  function restart(){
-    snakee = new Snake(
-      [
-        [6, 4],
-        [5, 4],
-        [4, 4],
-        [3, 4] ,
-        [2, 4],
-      ],
-      "right"
-    );
-    applee = new Apple([10, 10]);
-    score = 0;
-    refreshCanvas();
-  }
-
-  function drawScore(){
-    ctx.save();
-    ctx.font = "bold 200px sans-serif";
-    ctx.fillStyle = "gray";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    var centreX = canvasWidth/2;
-    var centreY = canvasHeight/2;
-    ctx.fillText(score.toString(), centreX, centreY);
-    ctx.restore();
   }
 
   function drawBlock(ctx, position){
@@ -240,9 +183,6 @@ window.onload = function () {
       case 40:
         newDirection = "down";
         break;
-      case 32:
-        restart();
-        return;
       default:
         return;
     }

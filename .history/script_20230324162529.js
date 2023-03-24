@@ -41,33 +41,17 @@ window.onload = function () {
         }while(applee.isOnSnake(snakee))
       }
       ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-      drawScore(); 
       snakee.draw();
       applee.draw();
+      drawScore(); 
       setTimeout(refreshCanvas, delay);
     }
     
   }
   function gameOver(){
     ctx.save();
-    ctx.font = "bold 70px sans-serif";
-    ctx.fillStyle = "black";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.strokeStyle = "white";
-    ctx.lineWidth = 5;
-    centreX = canvasWidth/2;
-    centreY = canvasHeight/2;
-    ctx.strokeText("Game Over", centreX, centreY - 180);
-    ctx.fillText("Game Over", centreX, centreY-180);
-    ctx.font = "bold 30px sans-serif";
-    ctx.strokeText(
-      "Appuyez sur la touche espace pour rejouer",
-      centreX,
-      centreY - 120
-    );
-    ctx.fillText("Appuyez sur la touche espace pour rejouer",centreX ,centreY-120);
-
+    ctx.fillText("Game Over", 5, 15);
+    ctx.fillText("Appuyez sur la touche espace pour rejouer",5 ,30)
     ctx.restore();
   }
 
@@ -89,13 +73,7 @@ window.onload = function () {
 
   function drawScore(){
     ctx.save();
-    ctx.font = "bold 200px sans-serif";
-    ctx.fillStyle = "gray";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    var centreX = canvasWidth/2;
-    var centreY = canvasHeight/2;
-    ctx.fillText(score.toString(), centreX, centreY);
+    ctx.fillText(score.toString(), 5, canvasHeight -5);
     ctx.restore();
   }
 
