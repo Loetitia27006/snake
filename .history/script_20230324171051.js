@@ -86,7 +86,7 @@ window.onload = function () {
     applee = new Apple([10, 10]);
     score = 0;
     clearTimeout(timeOut)
-    refreshCanvas();               
+    refreshCanvas();
   }
 
   function drawScore(){
